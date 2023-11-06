@@ -1,6 +1,19 @@
 'use client'
 
 
+interface contentInter {
+  name: string;
+  desc : string;
+  keyword ?: string;
+  index ?: string
+}
+interface today{
+  title: string;
+  date: string;
+  content: contentInter[]
+
+}
+
 
 
 import Image from 'next/image'
@@ -15,7 +28,8 @@ export default function Home() {
   const[month, setMonth] = useState<string>("1")
   const[time, setTime] = useState<string>("")
   
-  const[resultToday, setResultToday] = useState(null)
+  const[resultToday, setResultToday] = useState<today|null>(null);
+  // resultToday 의 타입 을 설정
   const[resulttomorrow, setResultTomorrow] = useState(null)
   const[resltMonth, setResultMonth] = useState(null)
 
@@ -43,7 +57,6 @@ export default function Home() {
 
   return (
   <>
-  
     <div className='w-full text-center'>
       <span >성별</span>
       <button onClick={()=>{setGender("m")}}>남자</button>
@@ -92,6 +105,18 @@ export default function Home() {
     
     {/*resultData && resultData.day.title*/}
     <button onClick={fetchData} className='border px-5 py-2 text-center w-full'>확인</button>
+    {resultToday && (
+      <>
+      <h2>{resultToday.title}</h2>
+      <p>{resultToday.date}</p>
+      {resultToday.content.map((item, idx) => (
+        <div key={idx}>
+          <h3 className='text-bold text-lg'>{item.name}</h3>
+          <p>{item.desc}</p>
+        </div>
+      ))}
+     </>
+    )}
 
   </>
   )
