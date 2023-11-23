@@ -58,24 +58,25 @@ export default function Home() {
   return (
   <>
     <div className='w-full text-center'>
-      <span >성별</span>
-      <button onClick={()=>{setGender("m")}}>남자</button>
-      <button onClick={()=>{setGender("f")}}>여자</button>
-      <button onClick={()=>{setGender("mf")}}>논바이너리</button>
+      <h1 className='font-bold text-xl'>성별</h1>
+      <div>
+      <button className='p-2 border shadow-md bg-green-200 mr-5 rounded-md' onClick={()=>{setGender("m")}}>남자</button>
+      <button className='p-2 border shadow-md bg-green-200 rounded-md ' onClick={()=>{setGender("f")}}>여자</button>
+      </div>
     </div>
     
-    <div>
-      <span>생년월일</span>
-      <input type='text' onChange={birthChange} value={birthDate} placeholder='생년월일(8자리)'></input>
-    </div>
-      <span>달</span>
+    <div className='w-full m-10 '>
+      <span className='basis-20 py-10'>생년월일</span>
+      <input className='' type='text' onChange={birthChange} value={birthDate} placeholder='생년월일(8자리)'></input>
+      <span className='m-10'>달</span>
       <select value={month} onChange={(e)=>setMonth(e.target.value)}>
         <option value="1">양력</option>
         <option value="2">양력 평달</option>
         <option value="3">음력 윤달</option>
       </select>
+    
 
-      <div>
+      <div className='mt-5'>
         <span>시간</span>
         <select value={time} onChange={(e)=>{setTime(e.target.value)}}>
           <option value="">모름</option>
@@ -96,11 +97,12 @@ export default function Home() {
      
 
 
-    <div>
-      <p>성별 : {gender}</p>
-      <p>생년월일 : {birthDate}</p>
-      <p>달 : {month}</p>
-      <p>시간 : {time}</p>
+      <div className='mt-5'>
+      <p className='mt-5'>성별 : {gender}</p>
+      <p className='mt-5'>생년월일 : {birthDate}</p>
+      <p className='mt-5'>달 : {month}</p>
+      <p className='mt-5'>시간 : {time}</p>
+      </div>
     </div>
     
     {/*resultData && resultData.day.title*/}
